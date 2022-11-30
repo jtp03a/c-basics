@@ -64,14 +64,36 @@ Format Specifiers
   %f - float
   %e or %g - double
   %c - char
-  %i - also bool (bools are really 0 or 1)
+  %i or %u - also bool (bools are really 0 or 1)
+  %hi, %hx, %ho - short int
+  %hu, %hx, %ho - unsigned short int
+  %Lf - long double
+  https://www.tutorialspoint.com/format-specifiers-in-c
+Command Line Arguments
+  arguments passed to the program at time program is executed
+  every c program has a main() function which is the entry point for the program
+  when main is called two arguments are passed to the function
+    argc - argument counter - integer that specifies the # of args typed on the cmd line
+    argv - argument vetcor - array of characters pointers
+      first entry in the array is a pointer to the name of teh program that is executing
+    
     
 ********************************************************/
 
 #include <stdio.h>
 #include <stdbool.h>
 
-int main() {
+int main(int argc, char *argv[]) {
+  //command line arugments examples
+  int numberOfArguments = argc;
+  char *argument1 = argv[0];
+  char *argument2 = argv[1];
+  
+  printf("Number of Arguments: %d/n", numberOfArguments);
+  printf("Argument 1 is the program name: %s/n", arugments1);
+  printf("Argument 2 is the command line argument: %s/n", argument2);
+  
+  //basic variables examples
   int myAge = 36;
   unsigned int x = 5
   
@@ -83,6 +105,7 @@ int main() {
   _Bool myBool = 1; //C89 standard
   bool myBoolean = true; //C99 standard, must include stdbool.h
   
+  //enums examples
   enum myNums {1, 2, 3, 4, 5};
   enum gender {male, female}
   
@@ -98,12 +121,14 @@ int main() {
        
   myNum1 = 1;
   myNum2 = 2;
-    
+  
+  //char examples
   char myChar;
   myChar = 'T'; //must be single quotes, double quotes is for string
   
   char newLine = '\n';
   
+  // printf and format specifiers examples
   int integerVar = 100;
   float floatVar = 331.38;
   double doubleVar = 8.44e+11;
@@ -115,6 +140,9 @@ int main() {
   printf("doubleVar = %e\n", doubleVar);
   printf("charVar = %c\n", charVar);
   printf("boolVar = %i\n", boolVar);
+  
+  float a = 3.9923232323;
+  printf("%.2f", a); //specifie precision 
   
     
   return 0;
