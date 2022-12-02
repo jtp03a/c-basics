@@ -1,5 +1,8 @@
 /**************************************************
 Variables in Memory
+  Instructions of a program and the data that it acts upon is stored in memory (RAM)
+  RAM contents are lost when the computer is turned off
+  Hard drive store persistent data
   Think of RAM as an ordered sequence of boxes
   The box is full when it represents 1 or the box is empty when it represents 0
   each box represents one binary digit, either 0 or 1
