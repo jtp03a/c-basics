@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char *argv[]) {
   
@@ -16,8 +18,8 @@ int main(int argc, char *argv[]) {
   area = width * height;
   
   //output
-  printf("The perimeter of your rectangle with height, %.2f, and width, %.2f is: %lf\n", height, width, perimeter);
-  printf("The area of your rectangle with height, %.2f, and width, %.2f is: %lf\n", height, width, area);
+  printf("The perimeter of your rectangle with height, %.2f, and width, %.2f is: %.2lf\n", height, width, perimeter);
+  printf("The area of your rectangle with height, %.2f, and width, %.2f is: %.2lf\n", height, width, area);
   
   return 0;
 }

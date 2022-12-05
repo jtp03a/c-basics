@@ -2,7 +2,7 @@
 
 int main() {
   //define enum
-  enum Company {GOOGLE, FACEBOOK, XEROX, YAHOO, EBAY, MICROSOFT};
+  enum Company {GOOGLE, FACEBOOK, XEROX = 10, YAHOO, EBAY, MICROSOFT};
   
   //assign values
   enum Company company1 = XEROX;
