@@ -17,7 +17,24 @@ Expressions and Statements in C
     operands can be constant, variables, or combination of two
     every expression has a value
   Compound Statement
-    Two or more statements grouped together by enclosing them in braces    
+    Two or more statements grouped together by enclosing them in braces
+Bitwise Operators
+  C offers bitwise logical and shift operators
+  operate on bits in integer values
+  & - AND - copies bit if exists in both operands
+  | - OR - copy bit if it exists in either operand
+  ^ - XOR - copy bit if it exits in one operand but not both
+  ~ - Compliment
+  << - Left Shift
+  >> - Right Shift
+  bit is a 0 or 1, 8 make up a byte
+  Examples of use - characteristics of a person
+    store whether a person is male or female with one bit
+    use three other bits to specify whether the person can speak french, german, or italian
+    another bit to record whether the person's salary is 50000 or more
+    in 4 bits a lot of data has been stored
+    most common integer size is 4 bytes - 32 bits
+    Binary conversion - take each postion 2^the position number to get that position value
 **********************************************************/
 
 #include <stdio.h>
@@ -75,7 +92,25 @@ int main() {
   // == (5 == 10) false, != (5 != 10) true, > (5 > 10 ) false, < (5 < 10) true, >= (10 >= 10) true, <= (5 <= 10) true
   logResult = c == d; // is the value of c equal to the value of d, 5 not equal None, returns false
   printf("\nResult of == is %i\n", logResult);
-
+  
+  //Bitwise operators
+  unsigned int e = 60; // 0011 1100
+  unsigned int f = 13; // 0000 1101
+  
+  int bwResult = 0;
+  
+  bwResult = e & f; //returns 0000 1100 - 12
+  printf("Bitwise AND result of 60 and 13 is: %d/n", bwResult);
+  
+  bwResult = e | f; //returns 0011 1101 - 61
+  printf("Bitwise OR result of 60 and 13 is: %d/n", bwResult);
+  
+  bwResult = e ^ f; //returns 0011 0001 - 49
+  printf("Bitwise XOR result of 60 and 13 is: %d/n", bwResult);
+  
+  bwResult = ~e; //returns -61
+  printf("Bitwise Compliment result of 60 is: %d/n", bwResult);
+  
   // Return statement;
   return 0;
 }
