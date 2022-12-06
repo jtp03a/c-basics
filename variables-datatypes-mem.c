@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
   
   //basic variables examples
   int myAge = 36;
-  unsigned int x = 5
+  unsigned int x = 5;
   
   myAge = 36;
   
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
   
   //enums examples
   enum myNums {1, 2, 3, 4, 5};
-  enum gender {male, female}
+  enum gender {male, female};
   
   enum myNums myNum1, myNum2;
   
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
   
   enum gender otherGender = female;
   
-  bool isMale = (myGender == otherGender) //returns False
+  bool isMale = (myGender == otherGender); //returns False
        
   myNum1 = 1;
   myNum2 = 2;

@@ -35,6 +35,38 @@ Bitwise Operators
     in 4 bits a lot of data has been stored
     most common integer size is 4 bytes - 32 bits
     Binary conversion - take each postion 2^the position number to get that position value
+Cast and SizeOf
+  Type conversions in C
+    Implicit Conversion - conversion of data between differnt types that happens automtically
+      Rules in C
+        When implicit conversion happens data will be truncated (less precise) or promoted (more precise), can be useful in certain cases
+        When a floating-point value is assigned to an int the decimal portion gets truncated
+        When a in is assigned to a float there is no change to the value of the number
+        Arithmetic
+          ***If 2 operands in an expression are ints any decimal portion resulting from devision is discarded***
+          ***if 1 operand is an int and the other is a float then the decimal is preserved***
+    Explicit Conversion (Cast operator) - conversion of data between different types that programmer does
+      Demand the precise type conversion you want
+      precent the quantity with the name of the desired type in parentheses
+      parentheses and type name together constitute a cast operator
+      has a higher precedence than all arithmetic operators except the unary minus and plus
+  sizeof
+    can find out how many bytes are occupied in memory by a given type (special keyword of C)
+    evaluated at compile time and not runtime unless a variable-length array is used in its argument
+    argument of sizeof can be a variable, array name, name of basic data type, name of a derived datatype, or expression
+    use sizeof to avoid having to calcuate and hardcode sizes into program (different sizes based on architecture)
+  Misc operators:
+    *variablename - derefrencing a pointer
+      represents a pointer to a variable
+    ?: - Ternary - If condition is true ? then value X : otherwise value Y
+Operator Precedence in C
+  operators have a precedence level that determines order of execution
+  whatever is enclosed in parentheses is execute first
+  Associativity if two operators have the same precedence
+    for most operators the order is left to right - ex 1 == 2 != 3 returns true (1)
+    unary goes right to left
+
+
 **********************************************************/
 
 #include <stdio.h>
@@ -100,16 +132,41 @@ int main() {
   int bwResult = 0;
   
   bwResult = e & f; //returns 0000 1100 - 12
-  printf("Bitwise AND result of 60 and 13 is: %d/n", bwResult);
+  printf("Bitwise AND result of 60 and 13 is: %d\n", bwResult);
   
   bwResult = e | f; //returns 0011 1101 - 61
-  printf("Bitwise OR result of 60 and 13 is: %d/n", bwResult);
+  printf("Bitwise OR result of 60 and 13 is: %d\n", bwResult);
   
   bwResult = e ^ f; //returns 0011 0001 - 49
-  printf("Bitwise XOR result of 60 and 13 is: %d/n", bwResult);
+  printf("Bitwise XOR result of 60 and 13 is: %d\n", bwResult);
   
   bwResult = ~e; //returns -61
-  printf("Bitwise Compliment result of 60 is: %d/n", bwResult);
+  printf("Bitwise Compliment result of 60 is: %d\n", bwResult);
+
+  bwResult = e << 2; // returns 1111 0000 - 240
+  printf("Bitwise Left shift by 2 result of 60 is %d\n", bwResult);
+
+  bwResult = e >> 4; // returns 0000 0011 - 3 - two bits get pushed off the end
+  printf("Bitwise right shift by 4 result of 60 is %d\n", bwResult);
+
+  // Casting
+  int g = 0;
+  float h = 12.125;
+
+  g = h; //returns 12
+
+  printf("When a float is cast into an int the decimal portion is lost: %d\n", g);
+
+  float i = 21.51;
+  float j = 26.99;
+
+  printf("%d\n", (int)i + (int)j); //returns 47
+
+  //sizeof
+  printf("The size of an int is: %lu\n", sizeof(int));
+
+  //asociatifity
+  printf("%d\n", 1 == 2 != 3); //returns 1
   
   // Return statement;
   return 0;
