@@ -29,16 +29,24 @@ Types of Control Flow in C
     switch - use when the value of a variable is successively compared against different
       switch (expression) {
         case value 1:
-          statements;
+          statements; //no brackets required for multiple statements in a case
           break;
         case value n:
           statements;
           break;
-        default:
+        default: - set if no other case evaulates
           statements;
           break;
       }
     goto
+      jumps to a different line of code using a label
+      two parts - label and goto keyword
+      label follows the same convention as naming a variable
+      not generally needed in C, hard to maintain
+      could use to jump out of a bunch of nested loops
+      goto label_name;
+
+      label_name: expression
   Looping/Repeating - variables created inside a loop have scope only inside the loop
     for - repeat statements multiple times
     while - repeat while a given condition is true, tests the condition before executing loop body
@@ -92,6 +100,25 @@ int main()
   x = y > 7 ? 25 : 50; // results in x being set to 25 if y is greater than 7, or to 50 otherwise
 
   printf("X = %i\n", x);
+
+  // Case example
+  enum Weekday {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
+  enum Weekday today = Monday;
+
+  switch(today) {
+    case Sunday:
+      printf("Today is Sunday\n");
+      break;
+    case Monday:
+      printf("Today is Monday\n");
+      break;
+    case Tuesday:
+      printf("Today is Tuesday\n");
+      break;
+    default:
+      printf("Hit the default case\n");
+      break;
+  }
 
   return 0;
 }
