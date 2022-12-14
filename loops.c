@@ -51,6 +51,10 @@ Tips on usage:
 Nested Loops
   Times to place one loop inside another - count the houses on a street and the occupants of each house
   
+Continue Statements
+  Skip the current iteration of a loop - usually wrapped in an if statement
+  continue;
+  
 **********************************************/
 
 #include <stdio.h>
@@ -111,6 +115,9 @@ int main() {
     
     printf("\n%d\t%d", i, sum);
   }
+  
+//   Continue
+  enum Day {Monday, Tuesday, Wednesday, Thurday, 
      
   return 0;
 }
