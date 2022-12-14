@@ -55,6 +55,11 @@ Continue Statements
   Skip the current iteration of a loop - usually wrapped in an if statement
   continue;
   
+Break Statement
+  immediatly exit the loop and terminate loop
+  if inside nested loops only affects inner loop
+  break;
+  
 **********************************************/
 
 #include <stdio.h>
@@ -117,7 +122,22 @@ int main() {
   }
   
 //   Continue
-  enum Day {Monday, Tuesday, Wednesday, Thurday, 
+  enum Day {Monday, Tuesday, Wednesday, Thurday, Friday, Saturday, Sunday};
+  
+  for(enum Day day = Monday; day <= Sunday; ++day){
+    if(day == Wednesday) {
+      printf("Skip this iteration\n");
+      continue;
+    }
+    
+    printf("It's not Wednesday!\n");
+  }
+  
+//  Break
+  int p = 10;
+  while(p>0) {
+    printf("%d\n", p);
+    scanf
      
   return 0;
 }
