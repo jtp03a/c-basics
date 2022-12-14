@@ -38,6 +38,19 @@ Do While Loop:
   } while(expression);
   
 Equivalent - for(;test;) while(test)
+
+Tips on usage:
+  a for loop is appropriate when the loop involves initializing and updating a variable in the same line
+  a while loop is better when the conditions are otherwise
+  use the while loop for logic controlled loops and the for loop for counter controlled loops
+  
+  while(scanf("%l", &num) == 1)
+  
+  for(count = 1; count <= 100; count++)
+  
+Nested Loops
+  Times to place one loop inside another - count the houses on a street and the occupants of each house
+  
 **********************************************/
 
 #include <stdio.h>
@@ -87,6 +100,17 @@ int main() {
     printf("\nNumber = %d", dCounter);
     dCounter++;
   } while(dCounter < 10);
-   
+  
+//   Nested Loop
+  for(int i = 1; i <= 10; ++i){
+    int sum = 0;
+      
+    for(int j = 1; j <= i; ++j){
+      sum += j;
+    }
+    
+    printf("\n%d\t%d", i, sum);
+  }
+     
   return 0;
 }
