@@ -13,10 +13,30 @@ Out-of-bounds error - trying to access an index value that is outside of range f
 
 Assigning values to Array
   array[index] = value;
+  
+Assign Initial Values
+  datatype array_name[size] = { element1, element2, .....element n };
+  int counter[5] = {0, 1, 2, 3, 4}
+  if you specify the array size and only initialize some of the elements then the remaining elements are set to 0
+  C99 Compiler feature - Designated initializers
+    float numbers[10] = {[2] = 100.1, [5]=50.7}
+  Repeating an initial value
+    Easiest thing to do is use a loop
+    No way to do this in C89 and C99
+    In C11 there is a way, need to learn more about this
+      
+    
+    
+    
+
+  
 ******************************************/
 #include <stdio.h>
 
+#define MONTHS 12
+
 int main() {
+//   general arrays example - specified size
   int grades[10];
   int count = 10;
   long sum = 0;
@@ -33,6 +53,20 @@ int main() {
   average = (float)sum/count;
   
   printf("\nAverage of the ten grades entered is: %.2f\n", average);
+  
+//   initialized array example
+  int days[MONTHS] = {31,28,31,30,31,30,31,31,30,31,30,31};
+  
+  for (int i = 0; i < MONTHS; i++) {
+    printf("Month %d has %2d days.\n", i + 1, days[i]);
+  }
+  
+//   designated initializer example
+  int days2[MONTHS] = {31, 28, [4]=31, 30, 31, [1] = 29};
+  
+  for (int i = 0; i < MONTHS; i++){
+    printf("%2d %d\n", i + 1, days2[i]);
+  }
   
   return 0;
 }
