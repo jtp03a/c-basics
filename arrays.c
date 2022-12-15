@@ -24,7 +24,7 @@ Assign Initial Values
     Easiest thing to do is use a loop
     No way to do this in C89 and C99
     In C11 there is a way, need to learn more about this
-
+******************************************
 Multidimensional Arrays - (Like a nested list in python)
   Two dimensional array - matrix, table, rows and columns
   datatype name[size][size]
@@ -41,7 +41,11 @@ Multidimensional Arrays - (Like a nested list in python)
     .
     .
     { row n element 1, element2,....element n}};
-
+*****************************************    
+Variable Length Arrays (VLA) - Not fixed size
+  Does not mean that you can modify the length of the array after you create it
+  keeps the same size after creation
+  specify the size of an array with a varriable
   
 ******************************************/
 #include <stdio.h>
@@ -49,7 +53,7 @@ Multidimensional Arrays - (Like a nested list in python)
 #define MONTHS 12
 
 int main() {
-//   general arrays example - specified size
+//   general arrays example
   int grades[10];
   int count = 10;
   long sum = 0;
@@ -67,7 +71,7 @@ int main() {
   
   printf("\nAverage of the ten grades entered is: %.2f\n", average);
   
-//   initialized array example
+//   initialized array example - Variable Length Array example
   int days[MONTHS] = {31,28,31,30,31,30,31,31,30,31,30,31};
   
   for (int i = 0; i < MONTHS; i++) {
