@@ -1,6 +1,7 @@
 /*************************************
 Notes - Control Flow
 Types of Control Flow in C
+
   Decision Making
     if-then
       if (expression) { 
@@ -23,10 +24,13 @@ Types of Control Flow in C
       else {
         statements;
       }
+
     Ternary operator - takes three operands
       conditional operator - can only have single statements
         condition ? if condition true then expression 1 : if condition false then expression 2
-    switch - use when the value of a variable is successively compared against different
+
+    Switch Statement
+    use when the value of a variable is successively compared against different
       switch (expression) {
         case value 1:
           statements; //no brackets required for multiple statements in a case
@@ -38,7 +42,8 @@ Types of Control Flow in C
           statements;
           break;
       }
-    goto
+
+    Goto
       jumps to a different line of code using a label
       two parts - label and goto keyword
       label follows the same convention as naming a variable
@@ -47,14 +52,16 @@ Types of Control Flow in C
       goto label_name;
 
       label_name: expression
+
   Looping/Repeating - variables created inside a loop have scope only inside the loop
     for - repeat statements multiple times
     while - repeat while a given condition is true, tests the condition before executing loop body
     do-while - same as while except tests the condition after executing loop body
+  
   Branching
-    break
-    continue
-    return
+    break;
+    continue;
+    return;
 **************************************/
 
 #include <stdio.h>

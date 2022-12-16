@@ -132,12 +132,6 @@ int main() {
     
     printf("It's not Wednesday!\n");
   }
-  
-//  Break
-  int p = 10;
-  while(p>0) {
-    printf("%d\n", p);
-    scanf
-     
+       
   return 0;
 }
