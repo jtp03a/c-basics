@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
   char *argument2 = argv[1];
   
   printf("Number of Arguments: %d/n", numberOfArguments);
-  printf("Argument 1 is the program name: %s/n", arugments1);
+  printf("Argument 1 is the program name: %s/n", argument1);
   printf("Argument 2 is the command line argument: %s/n", argument2);
   
   //basic variables examples
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
   bool myBoolean = true; //C99 standard, must include stdbool.h
   
   //enums examples
-  enum myNums {1, 2, 3, 4, 5};
+  enum myNums {ONE, TWO, THREE, FOUR, FIVE};
   enum gender {male, female};
   
   enum myNums myNum1, myNum2;
