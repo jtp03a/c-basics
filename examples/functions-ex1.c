@@ -2,7 +2,7 @@
 
 int gcd(int a, int b);
 float abs_value(float num);
-float square_root(float num);
+double square_root(float num);
 double power(double num, int exponent);
 
 // finds the greatest common divisor of two non-negative integer values, takes two ints
@@ -52,7 +52,7 @@ double power(double num, int exponent) {
   return result;
 }
 
-float square_root(float num) {
+double square_root(float num) {
   if (num < 0) {
     printf("A negative number was received");
     return -1.0;
@@ -70,7 +70,6 @@ float square_root(float num) {
   for (double dec_place = 1; dec_place <= precision; dec_place++) {
     for (dec_part = 1/(power(10, dec_place)); (integer_part + dec_part) * (integer_part + dec_part) <= num; dec_part += 1/(power(10, dec_place))) {
       result = integer_part + dec_part;
-      printf("%f\n", result);
     }
   }
   return result;
