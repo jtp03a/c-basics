@@ -23,7 +23,22 @@
  *    char word[] = {'H', 'e', 'l', 'l', 'o'};
  *    If you dont specify the size the C compiler automatically computes the number of elements in the array and automatically addds the null terminator
  *    Best practice is to let the compiler automatically compute the size
- *    char word[] = "Hello!"; 
+ *    Since you can not assign arrays in C, you can not assign strings either
+ *		i.e. char s[100; //declare
+ *			 s = "hello; // initialize, this will produce an error
+ *		You can use strncopy() to assign a value to a char array after it has been declared and initialized
+ *		You can access each element in the string array by the index and assign
+ *		i.e. s[0] = 'h';
+ *		Best practice is to initialize the string when declaring with no specified size and then to use strncopy() if need to change
+ *	
+ *	Display a string
+ *	  printf("\nThe message is: %s", message)
+ *	  %s is the format specifier for outputting a null-terminated string
+ *	Inputing a string
+ *	  char input[10];
+ *	  printf("Please input your name: ");
+ *	  scanf("%s", input);
+ *	  dont need to use the & on a string in scanf
  * ***************************************/
 
 #include <stdio.h>
