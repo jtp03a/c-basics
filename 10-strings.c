@@ -34,19 +34,42 @@
  *	Display a string
  *	  printf("\nThe message is: %s", message)
  *	  %s is the format specifier for outputting a null-terminated string
+ 
  *	Inputing a string
  *	  char input[10];
  *	  printf("Please input your name: ");
  *	  scanf("%s", input);
  *	  dont need to use the & on a string in scanf
+    
+    Testing if two strings have equality
+      In C the equality operator cannot be applied to arrays and structures so it wont work with stringe either
+        can use the strcmp function
+        str constant "x" is not the same as character constant 'x'
  * ***************************************/
 
 #include <stdio.h>
 
 int main() {
-  // The null character here terminates output of everything after it
-  printf("This string gets terminated early \0 because of the null character");
+    // The null character here terminates output of everything after it
+    printf("This string gets terminated early \0 because of the null character");
 
-  
-  return 0;
+    char str1[] = "To be or not to be"; //declare and initialize the string and let compiler compute size and add a null terminator
+    char str2[] = ", that is the question";
+
+    unsigned int count = 0;
+
+    while (str1[count] != '\0') {
+        ++count;
+    }
+
+    printf("The length of the string \"%s\" is %d characters. \n", str1, count);
+
+    count = 0;
+
+    while (str2[count] != '\0') {
+        ++count;
+    }
+
+    printf("The lenght of the string \"%s\" is %d characters.\n", str2, count);
+    return 0;
 }
