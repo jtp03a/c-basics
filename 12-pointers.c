@@ -24,7 +24,30 @@ Notes:
   design and develop complex data structures (stack, queue, linked list)
   direct memory access (effiecient and fast)
  
- -
+- Definining Pointers
+  <Data Type> *<Name>
+  Examples:
+  int * pnumber //can store the address of any variable of type int
+  char * pchar
+  float * pf, * pg
+  The space between the * and the pointer name is optional but best practice is to use the splace in declaration and omit it when derefrencing
+  %p is the format specifier for pointers
+  always initialize a pointer when you declare it
+    if you cant then set it to NULL
+      NULL
+        a constant that is defined in the standard library (#include stddef.h)
+        equivalent of 0 for a pointer
+        gaurenteed to not point to any location in memory
+        implicitly prevents the accidental overwriting of memory by using a pointer that does not point to anything specific (bufferoverflow, writing to memory you shouldnt)
+        
+- Address of operator
+  & - used to initialize pointer with the address of a variable already declared
+  Example:
+  int number = 99;
+  int * pnumber = &number;
+  the declaration of the variable must proceed the declaration of a pointer to that variable
+    cant assign a pointer to something that doenst have memory allocated
+  can declare regular variables and pointers in the same statement
+    double value, * pvalue = 1.00, &value
   
-
 ****************************************/
