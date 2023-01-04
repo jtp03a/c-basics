@@ -50,4 +50,44 @@ Notes:
   can declare regular variables and pointers in the same statement
     double value, * pvalue = 1.00, &value
   
+- Accessing Pointers
+  * - Indirection operator/dereference operator
+    dereferencing - accessing the value of the variable pointed to by a pointer
+  Example:
+    int number = 15;
+    int * pnumber = &number;
+    int result = 0;
+    result = *pnumber + 5;
+    
+- Pointer memory
+  Pointers occupy 8 bytes and the addresses have 16 hexadecimal digits
+    if a machine has a 64-bit os and compiler supports 64-bit addresses
+    some compilers only support 32-bit addressing in which case addresses with be 32-bit addresses
+  
 ****************************************/
+
+int main(void) {
+  // defrefrencing example
+  int count = 10, x;
+  int * pcount = &count;
+  x = *pcount;
+  
+  printf("count = %i, x = %i\n", count, x);
+    
+  //display pointers value - the memory address of the variable the pointer is pointing to
+  printf("the value of the pointer pcount is %p\n", pcount);
+  
+  //display the memory address of the variable count, should be the same address when using the addresss of operator directly on the variable
+  printf("the memory address of the variable count is %p\n", &count);
+  
+  //display the memory of address of the pointer - use the & - address of operator, (void*) prevent compiler warning, cast to void
+  printf("the memory addresss of the pcount pointer is %p\n", (void*)&pcount);
+  
+  //display the number of bytes a pointer occupies
+  printf("the memory size of pcount is %d bytes\n", (int)sizeof(pcount));
+  
+  //display the value of the variable that the pointer is pointing to - dereference operator
+  printf("the value of variable that the pointer pcount is pointing to is %d\n", *pcount);
+  
+  return 0;
+}
