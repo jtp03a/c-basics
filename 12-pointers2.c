@@ -41,7 +41,16 @@
  *  i.e.
  *  int values[100];
  *  int * valuesPtr = values; sets the pointer to point to the first value in the array, equivalent to valuesPtr = &values[0]
- *  
+ 
+ * Pointer Arithmetic - incrementation or decrementation on a pointer
+    used to iterate through the elements of an array
+    *(valuesPtr + 3) will give the 4th element in the array (0 + 3) 0, 1, 2, 3
+    *(valuesPtr + i) can be used to access the value contained in values[i]
+    values[10] = 27; == *(valuesPtr + 10) = 27;
+    since valuesPtr == values[0] by default you can set it to values[1] incrementing valuesPtr 1, valuesPtr += 1 or ++valuesPtr;
+    be mindful or out of bounds errors
+    
+    
  * ***********************************/
 
 #include <stddef.h>
@@ -99,4 +108,22 @@ int main(void) {
 
   printf("Value of i = %c\n", *(char *)vptr);
 
+  //pointer arithmetic, sum all elements in an array
+  int arraySum (int array[], const int n);
+    
+  int values[10] = {3, 7, -9, 3, 6, -1, 7, 9, 1, -5};
+  
+  printf("The sum is %i\n", arraySum(values10));
+ 
+}
+
+int arraySum (int array[], const int n) {
+  int sum = 0, *ptr;
+  int * const arrayEnd = array + n;
+
+  for (ptr = array; ptr < arrayEnd; ++ptr ) {
+    sum += *ptr;
+  }
+
+  return sum
 }
