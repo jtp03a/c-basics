@@ -64,7 +64,19 @@
       strcpy function does not check to see wheter the source string actually fits in the target
       string
     strcat() and strncat() - combining two character strings together (concatentation)
+      takes two strings, copy of second is tacked onto end of first, second string is not altered
+      returns the value of first argument
+      strcat does not check to see whether the second string will fit in the first array
+      if you fail to allocate enough space for the first array you will run into problems as excess characters overflow into adjecent memory
+      strncat takes a second argument indicating the max number of characters to add
     strcmp() and strncmp() - determining if two character strings are equal
+      cannot use == to compare strings, it only checks for same memory address
+      strcmp compares string contents not string addresses
+      does not compare arrays so it can be used to compare strings stored in arrays of different sizes
+      does not compare characters, i.e cant compare "A" to 'A'
+      returns 0 if two string arguments are teh same and nonzero
+      returns value < 0 if str2 is less than str1
+      returns value > 0 if str2 is greater than str1
  * ***************************************/
 
 #include <stdio.h>
@@ -72,7 +84,7 @@
 
 int main() {
     // The null character here terminates output of everything after it
-    printf("This string gets terminated early \0 because of the null character");
+    printf("This string gets terminated early \n\0 because of the null character");
 
     char str1[] = "To be or not to be"; //declare and initialize the string and let compiler compute size and add a null terminator
     char str2[] = ", that is the question";
@@ -97,21 +109,51 @@ int main() {
     //  strlen()
     char myString[] = "my string";
 
-    printf("The length of this string is %d", strlen(myString));
+    printf("The length of this string is %d\n", strlen(myString));
 
     //  strcpy() - equivalent of the assignment operator for strings - does check if size is right
     char src[50], dest[50];
 
-    strcpy(src, "This is source");
-    strcpy(dest, "This is destination");
+    strcpy(src, "This is source\n");
+    strcpy(dest, "This is destination\n");
     //  strncpy() - safer than strcpy() bc it takes a 3rd argument as the max number of characters to copy
     char src1[40];
     char src2[12];
 
     memset(dest, '\0', sizeof(dest));
-    strcpy(src, "Hello how are you doing");
+    strcpy(src, "Hello how are you doing\n");
     strncpy(dest, src, 10);
 
+    char temp[50];
+
+    // using size of as the 3d parameter will ensure that there are no bufferoverflows
+    strncpy(temp, myString, sizeof(temp) - 1);
+    printf("The string is: %s\n", temp);
+
+    // string concatenation
+    char catSrc[50], catDest[50];
+    strcpy(catSrc, "This is source");
+    strcpy(catDest, "This is destination");
+
+    strncat(catDest, catSrc, 15);
+
+    printf("Final destination string: |%s|\n", catDest);
+
+    printf("strcmp(\"A\", \"A\") is ");
+    printf("%d\n", strcmp("A", "A")); //returns 0
+
+    printf("strcmp(\"A\", \"B\") is ");
+    printf("%d\n", strcmp("A", "B")); //returns -1 - B is less than A
+
+    printf("strcmp(\"B\", \"A\") is ");
+    printf("%d\n", strcmp("B", "A")); //returns 1 - A is great than B
+
+    printf("strcmp(\"Z\", \"a\") is ");
+    printf("%d\n", strcmp("Z", "a")); //returns -1 - a is less than Z
+
+    printf("strcmp(\"apples\", \"apples\") is ");
+    printf("%d\n", strcmp("apples", "apples")); //returns 0
+;
     return 0;
 
 }
