@@ -50,6 +50,15 @@
     since valuesPtr == values[0] by default you can set it to values[1] incrementing valuesPtr 1, valuesPtr += 1 or ++valuesPtr;
     be mindful or out of bounds errors
     
+   Pointer Notation:
+    When passing an array to a function the parameter can either be in array notation i.e:
+     int arraySum (int array[], const int n);
+    or can be in pointer notation, i.e.:
+     int arraySum (int * array, const int n);
+    Best practice: if you are going to be using index numbers to reference the elements of the array declare parameter in array notation
+     if you are going to be iterating through the array with pointer arithmetic use the pointer notation
+    
+    
     
  * ***********************************/
 
