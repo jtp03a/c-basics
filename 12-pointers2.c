@@ -120,9 +120,13 @@ int main(void) {
 int arraySum (int array[], const int n) {
   int sum = 0, *ptr; //declare a int sum variable and an int pointer
   int * const arrayEnd = array + n; //declare a pointer with a constant memory address and initialize it to the address which is the first element + n
-  printf("The arrayEnd value is %d\n", arrayEnd);
+  printf("The arrayEnd value is: %p\n", arrayEnd);
+  printf("the address of array[0] is: %p\n", &array[0]);
   for (ptr = array; ptr < arrayEnd; ++ptr ) { // set ptr to the first element of array and increment the pointer ptr by one as long as it is less than the array End pointer
-    sum += *ptr; //dereference the value of ptr to add on to sum
+   printf("The address of ptr is: %p\n", ptr);
+   printf("The value at the current pointer is: %d\n", *ptr);
+   printf("The value of the next address is %p\n", ptr + 1); 
+   sum += *ptr; //dereference the value of ptr to add on to sum
   }
 
   return sum
