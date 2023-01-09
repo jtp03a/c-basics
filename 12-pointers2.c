@@ -57,6 +57,32 @@
      int arraySum (int * array, const int n);
     Best practice: if you are going to be using index numbers to reference the elements of the array declare parameter in array notation
      if you are going to be iterating through the array with pointer arithmetic use the pointer notation
+     
+     Pointer notation Example:
+     int arraySum (int * array, const int n);
+
+  int arraySum (int * array, const int n) {
+    int sum = 0;
+    int * const arrayEnd = array + n;
+    printf("The arrayEnd value is: %p\n", arrayEnd);
+    printf("the address of array[0] is: %p\n", &array[0]);
+    
+    for (; array < arrayEnd; ++array ) {
+      sum += *array;
+    }
+    
+    return sum;
+  }
+
+int main()
+{
+
+  int values[10] = {3, 7, -9, 3, 6, -1, 7, 9, 1, -5};
+  
+  printf("The sum is %i\n", arraySum(values, 10));
+
+    return 0;
+}
     
     
     
@@ -126,6 +152,7 @@ int main(void) {
  
 }
 
+// array notation example
 int arraySum (int array[], const int n) {
   int sum = 0, *ptr; //declare a int sum variable and an int pointer
   int * const arrayEnd = array + n; //declare a pointer with a constant memory address and initialize it to the address which is the first element + n
