@@ -41,7 +41,51 @@
  *  i.e.
  *  int values[100];
  *  int * valuesPtr = values; sets the pointer to point to the first value in the array, equivalent to valuesPtr = &values[0]
- *  
+ 
+ * Pointer Arithmetic - incrementation or decrementation on a pointer
+    used to iterate through the elements of an array
+    *(valuesPtr + 3) will give the 4th element in the array (0 + 3) 0, 1, 2, 3
+    *(valuesPtr + i) can be used to access the value contained in values[i]
+    values[10] = 27; == *(valuesPtr + 10) = 27;
+    since valuesPtr == values[0] by default you can set it to values[1] incrementing valuesPtr 1, valuesPtr += 1 or ++valuesPtr;
+    be mindful or out of bounds errors
+    
+   Pointer Notation:
+    When passing an array to a function the parameter can either be in array notation i.e:
+     int arraySum (int array[], const int n);
+    or can be in pointer notation, i.e.:
+     int arraySum (int * array, const int n);
+    Best practice: if you are going to be using index numbers to reference the elements of the array declare parameter in array notation
+     if you are going to be iterating through the array with pointer arithmetic use the pointer notation
+     
+     Pointer notation Example:
+     int arraySum (int * array, const int n);
+
+  int arraySum (int * array, const int n) {
+    int sum = 0;
+    int * const arrayEnd = array + n;
+    printf("The arrayEnd value is: %p\n", arrayEnd);
+    printf("the address of array[0] is: %p\n", &array[0]);
+    
+    for (; array < arrayEnd; ++array ) {
+      sum += *array;
+    }
+    
+    return sum;
+  }
+
+int main()
+{
+
+  int values[10] = {3, 7, -9, 3, 6, -1, 7, 9, 1, -5};
+  
+  printf("The sum is %i\n", arraySum(values, 10));
+
+    return 0;
+}
+    
+    
+    
  * ***********************************/
 
 #include <stddef.h>
@@ -99,4 +143,27 @@ int main(void) {
 
   printf("Value of i = %c\n", *(char *)vptr);
 
+  //pointer arithmetic, sum all elements in an array
+  int arraySum (int array[], const int n);
+    
+  int values[10] = {3, 7, -9, 3, 6, -1, 7, 9, 1, -5};
+  
+  printf("The sum is %i\n", arraySum(values10));
+ 
+}
+
+// array notation example
+int arraySum (int array[], const int n) {
+  int sum = 0, *ptr; //declare a int sum variable and an int pointer
+  int * const arrayEnd = array + n; //declare a pointer with a constant memory address and initialize it to the address which is the first element + n
+  printf("The arrayEnd value is: %p\n", arrayEnd);
+  printf("the address of array[0] is: %p\n", &array[0]);
+  for (ptr = array; ptr < arrayEnd; ++ptr ) { // set ptr to the first element of array and increment the pointer ptr by one as long as it is less than the array End pointer
+   printf("The address of ptr is: %p\n", ptr);
+   printf("The value at the current pointer is: %d\n", *ptr);
+   printf("The value of the next address is %p\n", ptr + 1); 
+   sum += *ptr; //dereference the value of ptr to add on to sum
+  }
+
+  return sum
 }
