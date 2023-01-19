@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int calcSqNum(int * num); //declare a function that takes a pointer to an int
+void calcSqNum(int * num); //declare a function that takes a pointer to an int
 
-int calcSqNum(int * num) {
+void calcSqNum(int * num) {
   *num = *num * *num; //square the value pointed to by the num pointer
 }
 
