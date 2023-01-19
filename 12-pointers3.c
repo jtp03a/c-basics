@@ -4,7 +4,16 @@
  *  Pass by value - when a function COPIES the actual value of an argument into the formal paramaters of function
  *    changes made to the parameter inside the function have no effect on the argument
  *  Pass by Reference - when a fucntion copies the address of an argument into the formal parameter
- *    changes made to the parameter affected actual passed argument    
+ *    changes made to the parameter affected actual passed argument  
+ 
+  Returning Pointers from a function
+    Can provide not just a single value but a whole set a values, structure, array etc.
+    Declare a function returns a pointer
+       int * myfunction() {
+        statements;
+       }
+    Be careful of:
+      use local variables to avoid interfering with the variable that the argument points to
  * ****************************/
 
 // pass by value example
