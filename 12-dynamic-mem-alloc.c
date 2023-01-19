@@ -21,4 +21,39 @@ Notes - Dynamic Memory Allocation
       function arguments and local variables in a function stored in stack
       when execution of a function ends the space allocated to store arguements and local variables is freed
       
+  Malloc
+    need to include stdlib.h
+    specify the number of bytes of memory as argument to the function
+    returns the address of the first byte of memory that is allocated, a pointer of type void
+    because you get an address returned, a pointer is the only place to put it
+    if memory requested cannot be allocated malloc() returns a pointer with the value NULL
+    
+    
+    int * pNum = (int*)malloc(100)
+    In the above example:
+      pNum will point to the first int location at the beginning of the 100 bytes that were allocated
+      if ints are 4 bytes each on this system then it can hold 25 int values
+      best practice to use size of operator to ensure code is portable:
+      int * pNum = (int*)malloc(25*sizeof(int));
+      
+      best practice to check with if statement to make sure memory is available when making a dynamic memory request
+      if(!pNum) {
+        statements to deal with memory allocation failure, display a message and terminate program
+      }
+      
+    Releasing
+      Memory that you allocate on the heap will be automatically released when your program ends but it is better to explicitly
+      release the memory when you are done using it even if its just before exiting the program, cleaner and best practice
+      ALWAYS RELEASE MEMORY IF ALLOCATED
+      Memory Leak - when you allocate some memory dynamically and do not retain the reference to it so you are unable to release it.
+        often occurs in a loop, becaue you do not relese the memory when it is no longer required your program consumes more and more
+        available memory on each loop iteration and eventually causes a problem
+        
+      free(pNum);
+      pNum = NULL;
+      
+      
+  
+  
+      
   
