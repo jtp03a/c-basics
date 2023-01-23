@@ -21,7 +21,7 @@ Notes - Dynamic Memory Allocation
       function arguments and local variables in a function stored in stack
       when execution of a function ends the space allocated to store arguements and local variables is freed
       
-  Malloc
+  Malloc()
     need to include stdlib.h
     specify the number of bytes of memory as argument to the function
     returns the address of the first byte of memory that is allocated, a pointer of type void
@@ -51,6 +51,51 @@ Notes - Dynamic Memory Allocation
         
       free(pNum);
       pNum = NULL;
+      
+  Calloc()
+    need to include stdlib.h
+    allocates memory as a number of elements of a givensize
+    initializes the memory that is allocated so all the bytes are zero
+    Takes two arguments, the number of data items and the size of each data item
+    
+    int * pNumber = (int*)calloc(75, sizeof(int));
+    
+  Realloc()
+    enables to reuse or extend memory that previously allocated using malloc() or calloc()
+    takes to arguments, a pointer contain an address that was previously returned by a call to malloc or calloc
+    the size in bytes of the new memory that you want to allocate
+    transferes teh contents of the previously allocated memory ref by the pointer that you supply as first arguemnt
+    returns a void* pointer to the new memory or NULL if operation failed
+    preserves contents of the original memory area although may be not in sequence
+    
+********************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main() {
+  
+  char * str;
+  
+  // Initial memory allocation
+  
+  str = (char*)malloc(15);
+  strcpy(str, "jake");
+  
+  printf("String = %s, Address = %p\n", str, str);
+  
+  //Reallocate Memory
+  str = (char*)realloc(str, 25);
+  strcat(str, ".com");
+  
+  printf("String = %s, Address = %p\n", str, str);
+  
+  free(str)
+  
+  
+  return 0;
+}
       
       
   
