@@ -75,17 +75,17 @@ Notes - Dynamic Memory Allocation
 
 int main() {
   
-  char * str;
+  char * str = NULL;
   
   // Initial memory allocation
   
-  str = (char*)malloc(15);
+  str = (char*)malloc(15 * sizeof(char));
   strcpy(str, "jake");
   
   printf("String = %s, Address = %p\n", str, str);
   
   //Reallocate Memory
-  str = (char*)realloc(str, 25);
+  str = (char*)realloc(str, 25 * sizeof(char));
   strcat(str, ".com");
   
   printf("String = %s, Address = %p\n", str, str);
