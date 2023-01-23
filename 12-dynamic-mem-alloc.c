@@ -68,6 +68,16 @@ Notes - Dynamic Memory Allocation
     returns a void* pointer to the new memory or NULL if operation failed
     preserves contents of the original memory area although may be not in sequence
     
+  Dynamic Memory Allocation Best Practice 
+    Avoid allocating lots of small amounts of memory
+      allocating memory on heap carries some overhead
+    Only hand onto the memory as long as you need it
+      always ensure that you provide for rleaeasing memory you have allocated
+      in general if allocate in a function release in the same function
+    Be careful to not inadvertently overwrite the address of memory you have allocated on the heap before releasing it
+      memory leak
+      be careful when allocating memory within a loop
+    
 ********************************************/
 #include <stdio.h>
 #include <stdlib.h>
