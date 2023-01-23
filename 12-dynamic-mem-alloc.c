@@ -73,7 +73,6 @@ Notes - Dynamic Memory Allocation
 #include <stdlib.h>
 #include <string.h>
 
-
 int main() {
   
   char * str;
@@ -91,7 +90,7 @@ int main() {
   
   printf("String = %s, Address = %p\n", str, str);
   
-  free(str)
+  free(str);
   
   
   return 0;
