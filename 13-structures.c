@@ -197,8 +197,8 @@ void getinfo(struct namect * pst);
 
 void getinfo (struct namect * pst) {
   char temp[SLEN];
-  printf("Please enter your name.\n")
-  s_gets(temp, SLEN);
+  printf("Please enter your name.\n");
+  gets_s(temp, SLEN);
   
   //allocate memory to hold name
   pst->fname = (char*)malloc(strlen(temp) + 1);
@@ -206,9 +206,9 @@ void getinfo (struct namect * pst) {
   //copy name to allocated memory
   strcpy(pst->fname, temp);
   printf("Please enter your last name.\n");
-  s_gets(temp, SLEN);
+  gets_s(temp, SLEN);
   pst->lname = (char*)malloc(strlen(temp) + 1);
-  strcpy(pst->lname, temp)
+  strcpy(pst->lname, temp);
     
   printf("Your name is %s %s", pst->fname, pst->lname);
 }
@@ -277,7 +277,9 @@ int main() {
     int letters;
   }
   
-  getinfo();
+  struct namect myName; 
+  
+  getinfo(&myName);
 
   return 0;
 }
