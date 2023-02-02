@@ -153,12 +153,65 @@ Notes
 
       struct intPtrs pointers;
 
+    Character arrays and character pointers
+      struct names {
+        char first[20];
+        char last[20];
+        }
+        
+      OR
       
+      struct pnames {
+        char *first;
+        char *last;
+      }
+        
+  struct names veep = {"Talia", "Summers"};
+  
+  struct pnames treas = {"Brad", "Fallingjaw"};
+  
+  printf("%s and %s\n", veep.first, treas.first);
+  
+  struct names variable veep
+    strings are stored inside the structure
+    structure has allocated a total of 40 bytes to hold the two names
+    
+  struct pnames variable treas
+    strings are stored whever the compiler stores string constants
+    structure holds the two addresses, which takes a total of 16 bytes on this system
+    struct pnames structure allocates no space to store strings
+    it can only be used with strings that have had space allocated for them elsewhere
+      such as string constants or strings in arrays
       
+    The pointers in a structure should be used only to manage strings that were create and allocated elsewhere in the program
+    
+    One instance in which it does make sense to use a pointer in a structure to handle a string is if you are dynamically allocating memory
+      use a pointer to store the address
+      has the adv that you can ask malloc to asllocate just the amount of space that is needed for a string
 
 ***************************************/
 
 #include <stdio.h>
+
+void getinfo(struct namect * pst);
+
+void getinfo (struct namect * pst) {
+  char temp[SLEN];
+  printf("Please enter your name.\n")
+  s_gets(temp, SLEN);
+  
+  //allocate memory to hold name
+  pst->fname = (char*)malloc(strlen(temp) + 1);
+  
+  //copy name to allocated memory
+  strcpy(pst->fname, temp);
+  printf("Please enter your last name.\n");
+  s_gets(temp, SLEN);
+  pst->lname = (char*)malloc(strlen(temp) + 1);
+  strcpy(pst->lname, temp)
+    
+  printf("Your name is %s %s", pst->fname, pst->lname);
+}
 
 int main() {
   struct date {
@@ -186,9 +239,11 @@ int main() {
   
   struct month months[12];
   
+  //pointers to structs
+  
   struct date today2, *datePtr;
 
-  datePtr = &today;
+  datePtr = &today2;
 
   datePtr->month = 9;
   datePtr->day = 25;
@@ -196,6 +251,8 @@ int main() {
 
   printf("Today's date is %d/%d/%d\n", datePtr->month, datePtr->day, datePtr->year);
 
+  //structs with pointers inside
+  
   struct intPtrs {
     int *p1;
     int *p2;
@@ -211,6 +268,16 @@ int main() {
 
   printf("i1 = %i, *points.p1 = %i\n", i1, *pointers.p1);
   printf("i2 = %i, *points.p2 = %i\n", i2, *pointers.p2);
+  
+  //structs and character pointers
+         
+  struct namect {
+    char *fname;
+    char *lname;
+    int letters;
+  }
+  
+  getinfo();
 
   return 0;
 }
