@@ -13,23 +13,14 @@ void readItem(struct item * i);
 void printItem(struct item * i);
 
 void readItem(struct item * i) {
-  char tempStr[100];
-  int price;
-  int quantity;
-  
-
   printf("Enter the product name: ");
-  scanf("%s", tempStr);
-  strcpy(i->itemName, tempStr);
-  
+  scanf("%s", i->itemName);
   printf("Enter the produce price: ");
-  scanf("%f", &price);
+  scanf("%f", &i->price);
   printf("Enter the product quantity: ");
-  scanf("%i", &quantity);
+  scanf("%i", &i->quantity);
   
-  i->price = price;
-  i->quantity = quantity;
-  
+  i->amount = (float)i->quantity * i->price;
 }
 
 void printItem(struct item * i) {
@@ -44,12 +35,14 @@ int main() {
   
   pBall->itemName = (char *)malloc(30 * sizeof(char));
   
-  if(pBall) {
+  if(pBall == NULL) {
       exit(-1);
   }
   
   readItem(pBall);
   printItem(pBall);
+  
+  free(pBall->itemName);
 
   return 0;
 }
