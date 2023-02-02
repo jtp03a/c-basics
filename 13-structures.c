@@ -140,7 +140,19 @@ Notes
       
       pointers to structures have a special structure pointer operator ->
         
-        
+        if (datePtr->day == 21);
+
+    Can define structures outside of function
+
+    Structures that contain pointers
+
+      struct intPtrs {
+        int *p1;
+        int *p2;
+      };
+
+      struct intPtrs pointers;
+
       
       
 
@@ -162,7 +174,6 @@ int main() {
   today.year = 2015;
   
   printf("Todays date is %d/%d/%d\n", today.month, today.day, today.year);
-  return 0;
   
   struct date myDates[3] = { {12, 10, 1975}, {12,30, 1980}, {11, 15, 2005} };
   
@@ -175,5 +186,30 @@ int main() {
   
   struct month months[12];
   
-  
+  struct date today2, *datePtr;
+
+  datePtr = &today;
+
+  datePtr->month = 9;
+  datePtr->day = 25;
+  datePtr->year = 2015;
+
+  printf("Today's date is %d/%d/%d\n", datePtr->month, datePtr->day, datePtr->year);
+
+  struct intPtrs {
+    int *p1;
+    int *p2;
+  };
+
+  struct intPtrs pointers;
+
+  int i1 = 100, i2;
+
+  pointers.p1 = &i1;
+  pointers.p2 = &i2;
+  *points.p2 = -97
+
+  printf("i1 = %i, *points.p1 = %i\n", )
+
+  return 0;
 }
