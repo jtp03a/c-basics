@@ -209,7 +209,8 @@ int main() {
   pointers.p2 = &i2;
   *points.p2 = -97
 
-  printf("i1 = %i, *points.p1 = %i\n", )
+  printf("i1 = %i, *points.p1 = %i\n", i1, *pointers.p1);
+  printf("i2 = %i, *points.p2 = %i\n", i2, *pointers.p2);
 
   return 0;
 }
