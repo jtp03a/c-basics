@@ -23,8 +23,9 @@ Notes - More String Functions
     second arg is a string containing all possible deliminter characters
 
   Analyzing Strings - islower(), isupper(), isalpha(), isdigit() etc.
-
-
+    Takes arg of char to be tested
+    return nonzero value of type int if true
+    convert return value to true or false
 
 *******************************/
 
