@@ -77,6 +77,7 @@
       returns 0 if two string arguments are teh same and nonzero
       returns value < 0 if str2 is less than str1
       returns value > 0 if str2 is greater than str1
+      strncmp() - limit the number of characters to compare
  * ***************************************/
 
 #include <stdio.h>
@@ -153,7 +154,12 @@ int main() {
 
     printf("strcmp(\"apples\", \"apples\") is ");
     printf("%d\n", strcmp("apples", "apples")); //returns 0
-;
+    
+    //strncmp
+    if (strncmp("astronomy", "astro", 5) == 0) {
+        printf("Found: astronomy");
+    }
+    
     return 0;
 
 }
