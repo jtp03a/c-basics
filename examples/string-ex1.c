@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 int countChars(char str[]);
-char concatStr(char str1[], char str2[], char result[]);
+void concatStr(char str1[], char str2[], char result[]);
 
 int countChars(char str[]) {
   int count = 0;
@@ -14,9 +14,19 @@ int countChars(char str[]) {
     return count;
 }
 
-char concatStr(char str1[], char str2[], char result[]) {
-  return result = *str1 + *str2;
+void concatStr(char str1[], char str2[], char result[]) {
+  int currentPos = 0;
+  for (int i = 0; str1[i] != '\0'; i++) {
+    result[currentPos] = str1[i];
+    currentPos++;
+  }
+ 
+  for (int i = 0;  str2[i] != '\0'; i++) {
+    result[currentPos] = str2[i];
+    currentPos++;
+  }
 }
+
 
 int main() {
   
@@ -25,7 +35,8 @@ int main() {
   char result[100];
    
   printf("The string %s has % i characters in it.\n", testString, countChars(testString));
-  printf("The result of concatenation between %s and %s is %s.\n", testString, testString2, concatStr(testString1, testString2, result));
+  concatStr(testString, testString2, result);
+  printf("The result of concatenation between %s and %s is %s.\n", testString, testString2, result);
 
   return 0;
 }
