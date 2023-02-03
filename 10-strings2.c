@@ -41,6 +41,7 @@ Notes - More String Functions
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int main() {
   //strchr()
@@ -110,16 +111,16 @@ int main() {
   
   //string to number
   double value = 0;
-  char nums[] = "3.5 2.5 1.26"
+  char nums[] = "3.5 2.5 1.26";
   char *pNums = nums;
   char *ptr = NULL;
   
   while(true) {
     value = strtod(pNums, &ptr);
-    if(pNum == ptr) {
+    if(pNums == ptr) {
       break;
     } else {
-      printf(" %f\n", value);
+      printf(" %.2f\n", value);
       pNums = ptr;
     }
   }
