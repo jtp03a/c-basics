@@ -26,8 +26,21 @@ Notes - More String Functions
     Takes arg of char to be tested
     return nonzero value of type int if true
     convert return value to true or false
-
+    
+  Converting Strings
+    character case toupper(), tolower()
+    
+    If character string has numbers 
+    atof() - to float
+    atoi() - to int
+    atol) - to long
+    atoll() - to long long
+    
 *******************************/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main() {
   //strchr()
@@ -88,6 +101,29 @@ int main() {
   }
   
   printf("\nYour string contained %d letters, %d digits, and  %d punctuation characters. \n", nLetters, nDigits, nPunct);
+  
+  //Character conversion
+  //to upper
+  for (int i = 0; (buf[i] = (char)toupper(buf[i])) != '\0'; i++); //toupper returns type int because it retursn ASCII value so have to cast to char
+  
+  printf("%s\n", buf);
+  
+  //string to number
+  double value = 0;
+  char nums[] = "3.5 2.5 1.26"
+  char *pNums = nums;
+  char *ptr = NULL;
+  
+  while(true) {
+    value = strtod(pNums, &ptr);
+    if(pNum == ptr) {
+      break;
+    } else {
+      printf(" %f\n", value);
+      pNums = ptr;
+    }
+  }
+  
   
   return 0;
 }
