@@ -1,0 +1,5 @@
+/***************
+Main Function - entry point to the progam (special function, all C programs have)
+Case sensitivity matters
+All statements end in semicolon
+***************/
