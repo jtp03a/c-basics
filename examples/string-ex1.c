@@ -26,6 +26,7 @@ void concatStr(const char str1[], const char str2[], char result[]) {
     result[currentPos] = str2[i];
     currentPos++;
   }
+  result[currentPos] = '\0';
 }
 
 bool compareStr(const char str1[], const char str2[]) {
@@ -47,10 +48,10 @@ bool compareStr(const char str1[], const char str2[]) {
 int main() {
   
   char testString[] = "Test";
-  char testString2[] = "Test";
+  char testString2[] = "Test2";
   char result[100];
    
-  printf("The string %s has % i characters in it.\n", testString, countChars(testString));
+  printf("The string %s has %i characters in it.\n", testString, countChars(testString));
   concatStr(testString, testString2, result);
   printf("The result of concatenation between %s and %s is %s.\n", testString, testString2, result);
   
