@@ -5,7 +5,13 @@
 void reverseStr(char str[]);
 
 void reverseStr(char str[]) {
-  strlen(str);
+  char reversedStr[strlen(str)];
+  
+  for (int i = 0; i < strlen(str); i++) {
+      reversedStr[i - strlen(str)] = str[i];
+  }
+  
+  printf("%s\n", reversedStr);
 }
 
 int main(){
@@ -15,7 +21,7 @@ int main(){
   
   scanf("%s", buf);
   
-  reverseString(buf);
+  reverseStr(buf);
 
   printf("%s\n", buf);
     
