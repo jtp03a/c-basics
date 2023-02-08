@@ -110,9 +110,42 @@ Accessing files
           format specifier
         returns the number of input items
         
+     Writing to a text file
+      fputc(int ch, file pointer) - write a single char
+        returns the char that was written if success
+        return EOF if failure
+        not usually used bc it is ineffecient
         
+      fputs(const char * str, file pointer) - write string
+        first arg is a pointer to the character string to be written
+        second arg is the file pointer
+        will write string until it reaches a '\0' chracter
+        does not write null terminator to file
+        expecting to write a line of text that has a newline chracter at end
+        
+      fprintf() - write formatted output
+        int fprintf(FILE *stream, const char*format);
+        first arg is file pointer
+        seconf arg is the formatted string
+        if success will return total number of chars written
   
-    
+  Find position in a file
+    need to be able to access data in a file other than sequential order
+    two aspects to file positioning
+      find out where you currently are
+        ftell() - long ftell(file pointer) - returns the offset in bytes from the beginning of the file
+        fgetpos() - int fgetpos(file pointer, fpos_t * position)
+          fpos_t - able to record every position in a file
+          used with position function fsetpos()
+      move to a given point
+        fseek() - int fseek(file pointer, long offset, int origin);
+          first arg is the file pointer
+          second arg is an offset from a reference point specified by the third arg
+          third arg is a reference point which can be
+            SEEK_SET - file start
+            SEEK_CUR - current pos in file
+            SEEK_END - file end
+ 
 ************************************/
 
 #include <stdio.h>
@@ -124,8 +157,11 @@ int main() {
   char str[60];
   char str1[10], str2[10], str3[10];
   int year
+  int ch;
+  int len;
+  fpos_t filePos;
   
-  fPntr = fopen("file.txt", "r");
+  fPntr = fopen("file.txt", "w+");
   
   if (fPntr == NULL) {
     perror("Error opening file");
@@ -149,7 +185,26 @@ int main() {
   printf("Read String2 %s\n", str2);
   printf("Read String3 %s\n", str3);
   printf("Read Integer %d\n", year);
+  
+  //fputc - write a single char - chars represented in the ASCII table
+  for(ch = 33; ch <= 100; ch++){
+    fputc(ch, fPntr);  
+  }
+  
+  //fputs - write a string
+  fputs("This is a string to write", fPntr);
+  fputs("This is another string to write", fPntr);
  
+  //fprintf - write formatted text
+  fprintf(fPntr, "%s %s %s %s %d", "Hello", "my", "number", "is", 555);
+  
+  //ftell
+  fseek(fPntr, 0, SEEK_END); //will go to the end of a file
+  len = ftell(fPntr); //while return the length in bytes (size) of the file
+  
+  printf("Total size of the file is %d bytes\n", len);
+
+  
   fclose(fPntr);
   fPntr = NULL;
  
