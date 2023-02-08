@@ -50,13 +50,72 @@ Accessing files
       a+ - open a text file for updating (reading and writing) appending to the end of the existing file or creating if the file doenst exist
       r+ - open a text file for updating (reading and writing)
       
-    Write Mode 
+    Example 
       FILE *pfile = NULL;
       char *filename = "myfile.text";
       pfile = fopen(filename, "w");
       
     if you only provide file name without path specification, file is assumed to be in the current directory
       you can specify a string that is the absolute or relative path
+      
+      For windows file paths must use \\ between directories, Linux uses /
+      
+    Rename a File - rename()
+      rename(oldname, newname)
+      returns 0 if success nonzero otherwise
+      
+      if(rename(oldname, newname)
+        printf("Success");
+      else
+        printf("Failure);
+        
+    Close a file - fclose()
+      use fclose() when finished with a fie to free up the file
+      takes file pointer as the argument
+      returns End of File (EOF) int if error occurs - special character usually -1
+      0 if successful
+      
+      fclose(pfile);
+      pfile = NULL;
+      
+      thread safe
+    
+    Delete a file - remove()
+      remove(name of file)
+      file cannot be currently open
+      
+    Reading from a text file
+      fgetc() - reads a character from a text file that has been opened for reading
+      takes a file pointer an  returns character read as type int
+      
+      int mchar = fgetc(pfile);
+      
+      rewind() positions the file pointer to the beggining
+        
   
     
 ************************************/
+
+#include <stdio.h>
+
+int main() {
+  //read char from file
+  FILE *fPntr;
+  int c;
+  
+  fPntr = fopen("file.txt", "r");
+  
+  if (fPntr == NULL) {
+    perror("Error opening file");
+    return(-1);
+  }
+  
+  while((c=fgetc(fPntr)) != EOF) {
+    printf("%c", c);
+  }
+  
+  fclose(fPntr);
+  fPntr = NULL;
+ 
+  return 0;
+}
