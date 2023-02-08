@@ -102,6 +102,14 @@ Accessing files
         if error NULL returned
         reading EOF causes NULL to be returned
         
+      fscanf(FILE *stream, const char *format) - formatted input
+        first arg is a pointer to a FILE
+        second arg is the format
+          whitespace char
+          non-whitespace char
+          format specifier
+        returns the number of input items
+        
         
   
     
@@ -114,6 +122,8 @@ int main() {
   FILE *fPntr;
   int c;
   char str[60];
+  char str1[10], str2[10], str3[10];
+  int year
   
   fPntr = fopen("file.txt", "r");
   
@@ -132,6 +142,14 @@ int main() {
     printf("%s", str);
   }
   
+  //fscanf
+  fscanf(fPntr, "%s %s %s %d", str1, str2, str3, &year); //have to understand that in the file the strings are separated by whitespace
+  
+  printf("Read String1 %s\n", str1); 
+  printf("Read String2 %s\n", str2);
+  printf("Read String3 %s\n", str3);
+  printf("Read Integer %d\n", year);
+ 
   fclose(fPntr);
   fPntr = NULL;
  
