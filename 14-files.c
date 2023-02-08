@@ -85,12 +85,23 @@ Accessing files
       file cannot be currently open
       
     Reading from a text file
-      fgetc() - reads a character from a text file that has been opened for reading
+      fgetc() - reads a single character from a text file that has been opened for reading
       takes a file pointer an  returns character read as type int
       
       int mchar = fgetc(pfile);
       
       rewind() positions the file pointer to the beggining
+      
+      fgets() - read from any file or stream
+        char *fgets(char *str, int nchars, FILE *stream)
+        reads a string into memeory pionted to by a str from the file stream
+        reads until encouters a \n or nchars-1, whichever occurs first
+        if a newline character is read its retained in teh string
+        a '\0' will be appeneded to the end of teh str
+        if no error fgets() returns the pointer, tr
+        if error NULL returned
+        reading EOF causes NULL to be returned
+        
         
   
     
@@ -102,6 +113,7 @@ int main() {
   //read char from file
   FILE *fPntr;
   int c;
+  char str[60];
   
   fPntr = fopen("file.txt", "r");
   
@@ -110,8 +122,14 @@ int main() {
     return(-1);
   }
   
+  //read single char from file
   while((c=fgetc(fPntr)) != EOF) {
     printf("%c", c);
+  }
+  
+  //read a string
+  if(fgets(str, 60, fPntr)!=NULL) {
+    printf("%s", str);
   }
   
   fclose(fPntr);
