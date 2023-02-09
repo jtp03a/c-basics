@@ -204,6 +204,8 @@ int main() {
   
   printf("Total size of the file is %d bytes\n", len);
 
+  //fseek
+  fseek(fPntr, 7, SEEK_SET); //move 7 bytes from the beg of the file
   
   fclose(fPntr);
   fPntr = NULL;
