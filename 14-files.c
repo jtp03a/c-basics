@@ -145,6 +145,10 @@ Accessing files
             SEEK_SET - file start
             SEEK_CUR - current pos in file
             SEEK_END - file end
+            
+        fsetpos(file pointer, fpos_t)
+          first arg - file pointer
+          second arg - fpos_t value that was given from fgetpos()
  
 ************************************/
 
@@ -206,6 +210,12 @@ int main() {
 
   //fseek
   fseek(fPntr, 7, SEEK_SET); //move 7 bytes from the beg of the file
+  
+  //fgetpos() , fsetpos()
+  fgetpos(fPntr, &filePos); //stores the current pos in filePos
+  fputs("Hell, World!", fPntr); //write the string to the file, moves the current position
+  fsetpos(fPntr, &filePos); //sets the current pos back to where filePos was before the string was written
+  fputs("New string written", fPntr); //overwrites the previous string since the current position was moved back
   
   fclose(fPntr);
   fPntr = NULL;
