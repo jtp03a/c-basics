@@ -1,8 +1,12 @@
+//This example demonstrates the bubble sort and also demonstrates passing and using function pointers
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int ascending(int a, int b);
 int descending(int a, int b);
+//funcionction returns an int pointer, takes a array of int, the size of the array and a pointer to a function that takes two ints as paramaters
+// Syntax for passing a function pointer as a parameter to another function, return_type(*name_of_func)(parameters)
 int *bubbleSort(int elements[], size_t length, int (*compare)(int a, int b));
 
 int ascending(int a, int b) {
@@ -49,7 +53,7 @@ int main () {
   
   int arr[] = {5, 1, 4, 2, 8};
   
-  int (*pAscending)(int, int) = &ascending; //delcare and initialize function pointers
+  int (*pAscending)(int, int) = &ascending; //delcare and initialize function pointers, return_type(*pointer_name)(parameter types) = (address_of_operator)func_name
   int (*pDescending)(int, int) = &descending;
   
   size_t length = sizeof(arr) / sizeof(arr[0]); //get length of the array
