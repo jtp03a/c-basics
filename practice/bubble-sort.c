@@ -34,17 +34,17 @@ int main () {
   int result = 0;
   
   //Tests
-  result = ascending(10, 5);
-  printf("Ascending, 10, 5, Exp: 1 (true): Result: %d\n", result);
+//   result = ascending(10, 5);
+//   printf("Ascending, 10, 5, Exp: 1 (true): Result: %d\n", result);
   
-  result = ascending(5, 10);
-  printf("Ascending, 5, 10, Exp: 0 (false): Result: %d\n", result);
+//   result = ascending(5, 10);
+//   printf("Ascending, 5, 10, Exp: 0 (false): Result: %d\n", result);
                      
-  result = descending(5, 10);
-  printf("Ascending, 5, 10, Exp: 1 (true): Result: %d\n", result);                   
+//   result = descending(5, 10);
+//   printf("Ascending, 5, 10, Exp: 1 (true): Result: %d\n", result);                   
                      
-  result = descending(10, 5);
-  printf("Ascending, 10, 5, Exp: 0 (false): Result: %d\n", result);
+//   result = descending(10, 5);
+//   printf("Ascending, 10, 5, Exp: 0 (false): Result: %d\n", result);
   
   int arr[] = {5, 1, 4, 2, 8};
   
