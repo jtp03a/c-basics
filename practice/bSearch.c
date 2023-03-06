@@ -1,3 +1,5 @@
+//demonstrates binary search, recusion, passing arrays to function in array notation
+
 #include <stdio.h>
 
 int BSearch(int arr[], int left, int right, int target);
