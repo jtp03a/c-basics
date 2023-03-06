@@ -1,3 +1,5 @@
+//Demonstrates pointer arithmetic, bubble sort, passing arrays to functions
+
 #include <stdio.h>
 
 int arrayManipulate(int *arr, unsigned int size);
