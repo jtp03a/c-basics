@@ -1,13 +1,34 @@
 #include <stdio.h>
+#include <string.h>
 
 int bitwiseOps(const char *first, const char *second);
 int binToDec(const char *s);
 
 int bitwiseOps(const char *first, const char *second) {
+    if ((strlen(first) != 16 || strlen(second) != 16)) {
+        return -1;
+    }
+    
+    
     int decFirst = binToDec(first);
     int decSecond = binToDec(second);
+    
+    printf("DEBUG: first: %d\n", decFirst);
+    printf("DEBUG: second: %d\n", decSecond);
+    
+    int result;
+    
+    if (decFirst % 2 == 0 && decSecond % 2 == 0) {
+        result = decFirst & decSecond;
+    } else if (decFirst % 2 != 0 && decSecond %2 != 0) {
+        result = decFirst | decSecond;
+    } else if (decFirst > 255 && decSecond > 255) {
+        result = decFirst ^ decSecond;
+    } else {
+        result = decFirst + decSecond;
+    }
   
-  return 0;
+  return result;
 }
 
 int binToDec(const char *s) {
@@ -25,8 +46,8 @@ int binToDec(const char *s) {
 
 
 int main () {
-  char first[] = "0000000000001111";
-  char second[] = "000000000000101";
+  char first[] = "0000000000000001";
+  char second[] = "0000000110001011";
   
   int result = bitwiseOps(first, second);
   
