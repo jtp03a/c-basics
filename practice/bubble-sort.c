@@ -6,7 +6,7 @@ int descending(int a, int b);
 int *bubbleSort(int elements[], size_t length, int (*compare)(int a, int b));
 
 int ascending(int a, int b) {
-  printf("DEBUG: a: %d, b: %d\n", a, b);
+  //printf("DEBUG: a: %d, b: %d\n", a, b);
   return a > b;
 }
 
@@ -16,8 +16,8 @@ int descending(int a, int b) {
 
 int *bubbleSort(int elements[], size_t length, int (*compare)(int a, int b)) {
   int i , j;
-  for (i = 0; i < length; i++) {
-    for (j=0; j < length - i - 1; j++) {
+  for (i = 0; i < length - 1; i++) {
+    for (j = 0; j < length - i - 1; j++) {
       //check the current element and the next element against the comparator
       if (compare(elements[j], elements[j+1])) {
         //if the comparator returns true then swap the current element with the next one
