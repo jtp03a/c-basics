@@ -1,3 +1,5 @@
+//demonstrates character to integer conversion, string pointers
+
 #include <stdio.h>
 #include <stdlib.h>
 
