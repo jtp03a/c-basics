@@ -94,6 +94,87 @@ void insertAtIndex(int data, int index) {
     }
 }
 
+void deleteFirst(){
+    //create a pointer to the current first node in the list
+    struct Node *startList;
+    
+    //the list is empty
+    if (last == NULL) {
+        printf("\nThe list is empty\n");
+    } else {
+        //set the pointer to the current first Node
+        startList = last->next;
+        //set the last node to point to the current second node
+        //which will become the new first node
+        last->next = startList->next;
+        free(startList);
+        startList = NULL;
+    }
+}
+
+void deleteLast() {
+    //need to know the second to last node so that it can become the new last
+    //and be directed to the point to the start of the list
+    
+    //create a pointer to the start of the list
+    struct Node *currListPos;
+    currListPos = last->next;
+    
+    if (last == NULL) {
+        printf("\nThe list is empty\n");
+    } else {
+        //advance to the current position to the second to last
+        while(currListPos->next != last) {
+            currListPos = currListPos->next;
+        }
+        
+        //set the second to last node next to point to the start of the list since it will 
+        //become the new last after the current last is deleted
+        currListPos->next = last->next;
+
+        free(last);
+        
+        //set what was the second to last node to now be the last
+        last = currListPos;
+    }
+}
+
+void deleteAtIndex(int index) {
+    //if the requsted insert position is less than 0 or greater than the 
+    //list length
+    if(index<0 || index > getListLength()) {
+        printf("\nInvalid delete position requested\n");
+        return;
+    }
+    
+    //if deleting the first position 
+    if (index == 0) {
+        deleteFirst();
+    //if the requested delete position is at the end
+    } else if (index == getListLength()) {
+        deleteLast();
+    } else {
+        //start at the front of the list
+        struct Node *currListPos, *deletePos;
+        currListPos = last->next;
+        
+        //advance the list to node before the requested delete position
+        for (int i = 0; i<index-1; i++) {
+            currListPos = currListPos->next;
+        }
+
+        //set the delete position, since we are at the node before the requested
+        //delete position the delete node is equal to the current position's next
+        deletePos = currListPos->next;
+        //reassign the next of the node before the delete position to the node
+        //after the delete position
+        currListPos->next = deletePos->next;
+        
+        free(deletePos);
+        deletePos = NULL;
+    }
+}
+
 void viewList() {
   //if the list is empty
   if (last == NULL) {
@@ -139,6 +220,9 @@ int getListLength() {
 }
 
 int main () {
+    
+  insertAtIndex(6000, 1);
+  
   insertAtFront(10);
   insertAtFront(20);
   insertAtFront(30);
@@ -163,4 +247,22 @@ int main () {
   printf("\n");
   
   printf("List length: %d\n", getListLength());
+  
+  deleteFirst();
+  deleteFirst();
+  
+  viewList();
+  printf("\n");
+  
+  deleteLast();
+  
+  viewList();
+  printf("\n");
+  
+  deleteAtIndex(1);
+  deleteAtIndex(6);
+  deleteAtIndex(0);
+  
+  viewList();
+  printf("\n");
 }
