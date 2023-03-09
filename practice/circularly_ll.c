@@ -87,6 +87,35 @@ int lengthLL(struct Node *h) {
     return len;
 }
 
+int deleteLL(struct Node *h, int index) {
+    struct Node *q;
+    int i,x;
+    
+    if(index < 0 || index > lengthLL(Head)){
+        return -1;
+    }
+    if(index==1){
+        while(h->next!=Head)h=h->next;
+        x=Head->data;
+        if(Head==h){
+            free(Head);
+            Head=NULL;
+        } else {
+            h->next=Head->next;
+            free(Head);
+            Head = h->next;
+        }
+    } else {
+        for(i=0;i<index -2;i++) {
+            h=h->next;
+        }
+        q=h->next;
+        h->next=q->next;
+        free(q);
+    }
+    return x;
+}
+
 int main(){
   int arr[] = {2, 3, 4, 5, 6};
   
@@ -99,4 +128,9 @@ int main(){
   
   insertLL(Head, 5, 10);
   displayLL(Head);
+  printf("\n");
+  
+  deleteLL(Head, 6);
+  displayLL(Head);
+  printf("\n");
 }
