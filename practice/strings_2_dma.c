@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,7 +50,7 @@ int haystack_needle(char *haystack, char *needle)
 
     // TODO: Create a char buffer named *buffer using malloc \
     ensure it is large enough to hold string[] + a nul-terminator
-    char *buffer = (char*)malloc(100);
+    char *buffer = (char*)malloc((strlen(haystack) - needleLength) * sizeof(char));
 
     // TODO: Ensure buffer was created
     if (buffer == NULL) {
