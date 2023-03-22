@@ -24,7 +24,7 @@ int main(void)
     
     //TODO: Copy your name into the allocated space using strcpy()
     if (str == 0) {
-        
+        return 1;
     }
     
     strcpy(str, name);
