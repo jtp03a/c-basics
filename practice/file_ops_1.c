@@ -9,7 +9,21 @@
 
 int writeNames(const char **fnames, const char **lnames, int sz, const char *fileName)
 {
-    FILE *fPntr = fopen(fileName, "w+");
+    if (sz <= 0) {
+        return 0;
+    }
+
+    if (fnames == NULL || lnames == NULL) {
+        return 0;
+    }
+
+    for (int i = 0; i < sz; i++ ) {
+         if (strlen(lnames[i]) == 0 || strlen(fnames[i]) == 0) {
+            return 0;
+        }
+    }
+
+    FILE *fPntr = fopen(fileName, "w");
 
     if (fPntr == NULL) {
         return 0;
@@ -44,14 +58,14 @@ int writeNames(const char **fnames, const char **lnames, int sz, const char *fil
 
     fclose(fPntr);
 
-    return 0;
+    return 1;
 }
 
-int main() {
-    const char *fnames[] = {"george", "john", "millard", "Theodore"};
-    const char *lnames[] = {"Washington", "adams", "Filmore", "roosevelt"};
+// int main() {
+//     const char *fnames[] = {"george", "john", "millard", "Theodore"};
+//     const char *lnames[] = {"Washington", "adams", "Filmore", "roosevelt"};
 
-    int result = writeNames(fnames, lnames, sizeof(fnames) / sizeof(*fnames), "names.txt");
+//     int result = writeNames(fnames, lnames, sizeof(fnames) / sizeof(*fnames), "names.txt");
 
-    return 0;
-}
+//     return 0;
+// }
