@@ -1,3 +1,8 @@
+// dynamic memory allocation
+// strncpy
+// tokenize - splitting my a delimiter
+// stacks
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,7 +62,7 @@ int main ()
       printf ("%s\n", stack[top]);
     }
 
-  // free(buffer);
+  free(buffer);
   // free(stack);
 
   return 0;
