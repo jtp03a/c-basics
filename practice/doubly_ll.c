@@ -39,12 +39,44 @@ nameNode *buildList(const char **names, int size)
 
 nameNode *removeNode(nameNode *head, const char *findName)
 {
+    nameNode *current = (nameNode*) malloc(sizeof(nameNode));
+    current = head;
+  
+    while (current->next != NULL) {
+        if (strcmp(findName, current->name)) {
+            if (current->prev == NULL) {
+                head = current->next;
+                free(current);
+            } else {
+
+                current->prev->next = current->next;
+                current->next->prev = current->prev;
+                free(current);
+            }
+        }
+        current = current->next;
+    }
+    
     return head;
 }
 
 void freeMemory(nameNode *head)
 {
 
+}
+
+void printList(nameNode *head) {
+    nameNode *current = (nameNode*) malloc(sizeof(nameNode));
+    current = head;
+    printf("[ ");
+    //traverse to end
+    while (current->next != NULL) {
+        printf("%s, ", current->name);
+        current = current->next;
+    }
+    printf("%s ]\n", current->name);
+    
+    free(current);
 }
 
 int main() {
@@ -56,23 +88,9 @@ int main() {
     
     printf("The name in head is : %s\n", head->name);
     
-    //Traverse list
-    nameNode *current = (nameNode*) malloc(sizeof(nameNode));
-    current = head;
-    
-    //traverse to end
-    while (current->next != NULL) {
-        printf("%s\n", current->name);
-        current = current->next;
-    }
-    printf("%s\n", current->name);
-    // traverse in reverse
-    while (current != NULL) {
-        printf("%s\n", current->name);
-        current = current->prev;
-    }
-    
-    
+    printList(head);
+    removeNode(head, "Peters");
+    printList(head);
     
     return 0;
 }
