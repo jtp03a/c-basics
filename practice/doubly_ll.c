@@ -15,7 +15,7 @@ typedef struct nameNode
 
 nameNode *buildList(const char **names, int size)
 {
-    nameNode *head = (nameNode*) malloc(sizeof(nameNode));
+    nameNode *head = NULL;
     printf("%d\n", size);
     for (int i = 0; i < size; i++) {
         nameNode *newNode = (nameNode*) malloc(sizeof(nameNode));
@@ -65,16 +65,14 @@ int main() {
         printf("%s\n", current->name);
         current = current->next;
     }
-    printf("Data at the tail: %s\n", current->name);
+    printf("%s\n", current->name);
     // traverse in reverse
-    // while (current != NULL) {
-    //     printf("%s\n", current->name);
-    //     current = current->prev;
-    // }
-    
+    while (current != NULL) {
+        printf("%s\n", current->name);
+        current = current->prev;
+    }
     
     
     
     return 0;
 }
-
