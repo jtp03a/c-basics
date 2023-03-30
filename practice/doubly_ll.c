@@ -41,19 +41,22 @@ nameNode *removeNode(nameNode *head, const char *findName)
 {
     nameNode *current = (nameNode*) malloc(sizeof(nameNode));
     current = head;
-  
+ 
     while (current->next != NULL) {
-        if (strcmp(findName, current->name)) {
+        if (strcmp(findName, current->name) == 0) {
+            printf("Found Match");
             if (current->prev == NULL) {
                 head = current->next;
+                current->next->prev == NULL;
                 free(current);
+                return head;
             } else {
-
                 current->prev->next = current->next;
                 current->next->prev = current->prev;
                 free(current);
+                return head;
             }
-        }
+         }
         current = current->next;
     }
     
@@ -89,7 +92,7 @@ int main() {
     printf("The name in head is : %s\n", head->name);
     
     printList(head);
-    removeNode(head, "Peters");
+    head = removeNode(head, "Peter");
     printList(head);
     
     return 0;
