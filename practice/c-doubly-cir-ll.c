@@ -19,6 +19,7 @@ struct Node* insertFront(int num, struct Node *head) {
         head = newNode;
         head->next = head;
         head->prev = head;
+        return head;
     }   
     
     head->prev->next = newNode;
